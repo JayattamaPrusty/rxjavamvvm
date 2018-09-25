@@ -1,6 +1,6 @@
-package com.hitesh.mvvmrx.api;
+package com.jayaa.mvvmrx.api;
 
-import com.hitesh.mvvmrx.model.AndroidVersionResposne;
+import com.jayaa.mvvmrx.model.AndroidVersionResposne;
 
 
 import io.reactivex.Observable;

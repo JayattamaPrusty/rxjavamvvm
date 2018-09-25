@@ -1,4 +1,4 @@
-package com.hitesh.mvvmrx;
+package com.jayaa.mvvmrx;
 
 import org.junit.Test;
 

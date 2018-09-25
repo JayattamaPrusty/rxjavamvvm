@@ -1,4 +1,4 @@
-package com.hitesh.mvvmrx;
+package com.jayaa.mvvmrx;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

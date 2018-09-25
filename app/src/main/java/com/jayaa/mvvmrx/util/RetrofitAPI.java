@@ -1,4 +1,4 @@
-package com.hitesh.mvvmrx.util;
+package com.jayaa.mvvmrx.util;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;

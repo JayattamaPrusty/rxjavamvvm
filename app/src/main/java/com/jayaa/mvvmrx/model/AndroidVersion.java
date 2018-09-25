@@ -1,4 +1,4 @@
-package com.hitesh.mvvmrx.model;
+package com.jayaa.mvvmrx.model;
 
 public class AndroidVersion {
 

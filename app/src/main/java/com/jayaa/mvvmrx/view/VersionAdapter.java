@@ -1,13 +1,13 @@
-package com.hitesh.mvvmrx.view;
+package com.jayaa.mvvmrx.view;
 
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.hitesh.mvvmrx.R;
-import com.hitesh.mvvmrx.databinding.ItemVersionLayoutBinding;
-import com.hitesh.mvvmrx.model.AndroidVersion;
+import com.jayaa.mvvmrx.R;
+import com.jayaa.mvvmrx.databinding.ItemVersionLayoutBinding;
+import com.jayaa.mvvmrx.model.AndroidVersion;
 
 import java.util.List;
 

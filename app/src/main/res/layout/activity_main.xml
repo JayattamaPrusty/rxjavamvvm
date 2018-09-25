@@ -6,7 +6,7 @@
         <import type="android.view.View"/>
         <variable
             name="androidVersionViewModel"
-            type="com.hitesh.mvvmrx.viewModel.AndroidVersionViewModel" />
+            type="com.jayaa.mvvmrx.viewModel.AndroidVersionViewModel" />
     </data>
 
     <RelativeLayout

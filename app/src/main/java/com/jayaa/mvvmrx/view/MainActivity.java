@@ -1,4 +1,4 @@
-package com.hitesh.mvvmrx.view;
+package com.jayaa.mvvmrx.view;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -6,11 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.hitesh.mvvmrx.R;
-import com.hitesh.mvvmrx.databinding.ActivityMainBinding;
-import com.hitesh.mvvmrx.model.AndroidVersionResposne;
-import com.hitesh.mvvmrx.util.Logger;
-import com.hitesh.mvvmrx.viewModel.AndroidVersionViewModel;
+import com.jayaa.mvvmrx.R;
+import com.jayaa.mvvmrx.databinding.ActivityMainBinding;
+import com.jayaa.mvvmrx.model.AndroidVersionResposne;
+import com.jayaa.mvvmrx.util.Logger;
+import com.jayaa.mvvmrx.viewModel.AndroidVersionViewModel;
 
 import io.reactivex.observers.DisposableObserver;
 

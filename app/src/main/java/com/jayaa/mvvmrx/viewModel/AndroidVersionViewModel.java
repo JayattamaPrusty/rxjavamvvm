@@ -1,14 +1,11 @@
-package com.hitesh.mvvmrx.viewModel;
+package com.jayaa.mvvmrx.viewModel;
 
 import android.content.Context;
-import android.support.annotation.IntDef;
 
-import com.hitesh.mvvmrx.api.AndroidUserAPI;
-import com.hitesh.mvvmrx.model.AndroidVersion;
-import com.hitesh.mvvmrx.util.RetrofitAPI;
+import com.jayaa.mvvmrx.api.AndroidUserAPI;
+import com.jayaa.mvvmrx.model.AndroidVersion;
+import com.jayaa.mvvmrx.util.RetrofitAPI;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -55,8 +52,4 @@ public class AndroidVersionViewModel extends Observable {
              return true;
          return false;
     }
-
-
-
-
 }

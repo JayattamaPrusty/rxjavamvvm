@@ -1,8 +1,8 @@
-package com.hitesh.mvvmrx.util;
+package com.jayaa.mvvmrx.util;
 
 import android.util.Log;
 
-import com.hitesh.mvvmrx.BuildConfig;
+import com.jayaa.mvvmrx.BuildConfig;
 
 public class Logger {
 

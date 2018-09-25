@@ -1,4 +1,4 @@
-package com.hitesh.mvvmrx.util;
+package com.jayaa.mvvmrx.util;
 
 public class Constatnts {
 
