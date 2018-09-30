@@ -13,3 +13,4 @@ The final goal is, to get the data from Server and showing that in the APP.
 
 >#### App design ####
 ![picture alt](https://github.com/Hitesh880443/MVVM_RX/blob/master/app/src/main/java/com/hitesh/mvvmrx/screens/home.png "App design screens")
+
