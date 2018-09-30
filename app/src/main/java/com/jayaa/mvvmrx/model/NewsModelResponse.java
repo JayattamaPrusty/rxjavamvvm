@@ -12,6 +12,7 @@ public class NewsModelResponse {
     private String title;
 
     @SerializedName("rows")
+
     @Expose
     public ArrayList<NewsModelItem> data;
 
