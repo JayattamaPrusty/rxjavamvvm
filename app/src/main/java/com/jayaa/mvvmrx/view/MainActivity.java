@@ -8,16 +8,16 @@ import android.support.v7.widget.RecyclerView;
 
 import com.jayaa.mvvmrx.R;
 import com.jayaa.mvvmrx.databinding.ActivityMainBinding;
-import com.jayaa.mvvmrx.model.AndroidVersionResposne;
+import com.jayaa.mvvmrx.model.NewsModelResponse;
 import com.jayaa.mvvmrx.util.Logger;
-import com.jayaa.mvvmrx.viewModel.AndroidVersionViewModel;
+import com.jayaa.mvvmrx.viewModel.NewsModelViewModel;
 
 import io.reactivex.observers.DisposableObserver;
 
 public class MainActivity extends AppCompatActivity{
 
     private ActivityMainBinding mMainActivityBinding;
-    private AndroidVersionViewModel mAndroidVersionViewModel;
+    private NewsModelViewModel mNewsModelViewModel;
     private DisposableObserver mGetAndroidVersion;
     private RecyclerView mVersionList;
     private VersionAdapter mVersionAdapter;
@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity{
 
     private void initDataBinding() {
         mMainActivityBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        mAndroidVersionViewModel = new AndroidVersionViewModel(this);
-        mMainActivityBinding.setAndroidVersionViewModel(mAndroidVersionViewModel);
+        mNewsModelViewModel = new NewsModelViewModel(this);
+        mMainActivityBinding.setNewsModelViewModel(mNewsModelViewModel);
     }
 
     private void setUpView() {
@@ -42,17 +42,18 @@ public class MainActivity extends AppCompatActivity{
         mVersionList = mMainActivityBinding.rlVersionlist;
         mVersionList.setLayoutManager(new LinearLayoutManager(this));
         mVersionAdapter = new VersionAdapter();
-        mVersionAdapter.showList(mAndroidVersionViewModel.getDataList());
+        mVersionAdapter.showList(mNewsModelViewModel.getDataList());
         mVersionList.setAdapter(mVersionAdapter);
     }
 
     private void getAndroidVersion() {
-        mGetAndroidVersion = new DisposableObserver<AndroidVersionResposne>() {
+        mGetAndroidVersion = new DisposableObserver<NewsModelResponse>() {
             @Override
-            public void onNext(AndroidVersionResposne data) {
+            public void onNext(NewsModelResponse data) {
                 if (data != null && data.getData().size() > 0) {
-                    mAndroidVersionViewModel.updateVersionDataList(data.getData());
-                    mMainActivityBinding.setAndroidVersionViewModel(mAndroidVersionViewModel);
+                    mNewsModelViewModel.updateVersionDataList(data.getData());
+                    //mMainActivityBinding.setAndroidVersionViewModel(mNewsModelViewModel);
+                    mMainActivityBinding.setNewsModelViewModel(mNewsModelViewModel);
                     updateList();
                 }
             }
@@ -67,11 +68,11 @@ public class MainActivity extends AppCompatActivity{
             }
         };
 
-        mAndroidVersionViewModel.getAndroidVersionList(mGetAndroidVersion);
+        mNewsModelViewModel.getAndroidVersionList(mGetAndroidVersion);
     }
 
     private void updateList() {
-        mVersionAdapter.showList(mAndroidVersionViewModel.getDataList());
+        mVersionAdapter.showList(mNewsModelViewModel.getDataList());
     }
 
     @Override

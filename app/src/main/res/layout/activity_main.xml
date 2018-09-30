@@ -5,8 +5,8 @@
     <data>
         <import type="android.view.View"/>
         <variable
-            name="androidVersionViewModel"
-            type="com.jayaa.mvvmrx.viewModel.AndroidVersionViewModel" />
+            name="newsModelViewModel"
+            type="com.jayaa.mvvmrx.viewModel.NewsModelViewModel" />
     </data>
 
     <RelativeLayout
@@ -27,7 +27,7 @@
             android:layout_height="match_parent"
             android:layout_below="@id/toolbar"
             android:padding="5dp"
-            android:visibility="@{androidVersionViewModel.hasData ? View.VISIBLE : View.GONE}"
+            android:visibility="@{newsModelViewModel.hasData ? View.VISIBLE : View.GONE}"
 
             />
 
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/no_data"
-            android:visibility="@{androidVersionViewModel.hasData ?  View.GONE : View.VISIBLE}"
+            android:visibility="@{newsModelViewModel.hasData ?  View.GONE : View.VISIBLE}"
             />
 
 

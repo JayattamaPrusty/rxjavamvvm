@@ -1,6 +1,6 @@
 package com.jayaa.mvvmrx.api;
 
-import com.jayaa.mvvmrx.model.AndroidVersionResposne;
+import com.jayaa.mvvmrx.model.NewsModelResponse;
 
 
 import io.reactivex.Observable;
@@ -8,6 +8,9 @@ import retrofit2.http.GET;
 
 public interface AndroidUserAPI {
 
-    @GET("/versionapi.json")
-    Observable<AndroidVersionResposne> getAndroidVersion();
+    @GET("s/2iodh4vg0eortkl/facts.json")
+    Observable<NewsModelResponse> getAndroidVersion();
 }
+
+
+//https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json

@@ -1,20 +1,21 @@
-package com.jayaa.mvvmrx.view;
+ package com.jayaa.mvvmrx.view;
 
-import android.databinding.DataBindingUtil;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
+ import android.databinding.DataBindingUtil;
+ import android.support.v7.widget.RecyclerView;
+ import android.view.LayoutInflater;
+ import android.view.ViewGroup;
 
-import com.jayaa.mvvmrx.R;
-import com.jayaa.mvvmrx.databinding.ItemVersionLayoutBinding;
-import com.jayaa.mvvmrx.model.AndroidVersion;
+ import com.bumptech.glide.Glide;
+ import com.jayaa.mvvmrx.R;
+ import com.jayaa.mvvmrx.databinding.ItemVersionLayoutBinding;
+ import com.jayaa.mvvmrx.model.NewsModelItem;
 
-import java.util.List;
+ import java.util.List;
 
 public class VersionAdapter extends RecyclerView.Adapter<VersionAdapter.VersionAdapterViewHolder> {
 
 
-    private List<AndroidVersion> mList;
+    private List<NewsModelItem> mList;
     private LayoutInflater mInflater;
 
     @Override
@@ -23,14 +24,18 @@ public class VersionAdapter extends RecyclerView.Adapter<VersionAdapter.VersionA
             mInflater = LayoutInflater.from(parent.getContext());
         }
 
-        ItemVersionLayoutBinding binding
-                = DataBindingUtil.inflate(mInflater, R.layout.item_version_layout, parent, false);
+        ItemVersionLayoutBinding binding = DataBindingUtil.inflate(mInflater, R.layout.item_version_layout, parent, false);
+
+        //return null;
         return new VersionAdapterViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(VersionAdapterViewHolder holder, int position) {
-        holder.binding.setSingleVersion(mList.get(position));
+      holder.binding.setNewsModelItem(mList.get(position));
+        Glide.with(holder.binding.ivNewsitem.getContext()).load(mList.get(position).getImageHref())
+                .thumbnail(0.5f)
+                .into(holder.binding.ivNewsitem);
 
     }
 
@@ -45,15 +50,17 @@ public class VersionAdapter extends RecyclerView.Adapter<VersionAdapter.VersionA
     public static class VersionAdapterViewHolder extends RecyclerView.ViewHolder {
 
         private final ItemVersionLayoutBinding binding;
+        //ImageView iv_image;
 
         public VersionAdapterViewHolder(ItemVersionLayoutBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+           // iv_image=(ImageView)binding.ivNewsitem;
         }
 
     }
 
-    public void showList(List<AndroidVersion> noteList) {
+    public void showList(List<NewsModelItem> noteList) {
         this.mList = noteList;
         notifyDataSetChanged();
     }

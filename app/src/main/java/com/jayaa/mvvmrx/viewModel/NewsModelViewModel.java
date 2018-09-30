@@ -3,7 +3,7 @@ package com.jayaa.mvvmrx.viewModel;
 import android.content.Context;
 
 import com.jayaa.mvvmrx.api.AndroidUserAPI;
-import com.jayaa.mvvmrx.model.AndroidVersion;
+import com.jayaa.mvvmrx.model.NewsModelItem;
 import com.jayaa.mvvmrx.util.RetrofitAPI;
 
 import java.util.ArrayList;
@@ -15,17 +15,17 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 
-public class AndroidVersionViewModel extends Observable {
+public class NewsModelViewModel extends Observable {
 
-    private AndroidVersion mVersion;
+    private NewsModelItem mVersion;
     private Context mContext;
-    private List<AndroidVersion> dataList;
+    private List<NewsModelItem> dataList;
 
 
 
-    public AndroidVersionViewModel(Context mContext) {
+    public NewsModelViewModel(Context mContext) {
         this.mContext = mContext;
-        this.dataList = new ArrayList<AndroidVersion>();
+        this.dataList = new ArrayList<NewsModelItem>();
     }
 
     public void getAndroidVersionList(Observer mObserver) {
@@ -38,11 +38,11 @@ public class AndroidVersionViewModel extends Observable {
 
     }
 
-    public void updateVersionDataList(List<AndroidVersion> list) {
+    public void updateVersionDataList(List<NewsModelItem> list) {
         dataList = list;
     }
 
-    public List<AndroidVersion> getDataList() {
+    public List<NewsModelItem> getDataList() {
         return dataList;
     }
 

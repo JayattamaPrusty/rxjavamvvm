@@ -1,37 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
-            name="singleVersion"
-            type="com.jayaa.mvvmrx.model.AndroidVersion" />
+            name="newsModelItem"
+            type="com.jayaa.mvvmrx.model.NewsModelItem"/>
     </data>
 
-    <LinearLayout
+
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/lightBg"
-        android:padding="5dp"
-        android:layout_margin="5dp"
-        >
+        card_view:cardCornerRadius="6dp"
+        card_view:cardElevation="3dp"
+        card_view:cardUseCompatPadding="true">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{singleVersion.name}"
-            android:textSize="15dp"
-            />
+            android:layout_margin="5dp"
+            android:padding="5dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{singleVersion.api_level}" />
+            <!-- Text News Name -->
+            <TextView
+                android:id="@+id/txt_news_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:padding="@dimen/padding_three"
+                android:text="@{newsModelItem.title}"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/tv_largetext"
+                />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{singleVersion.version}" />
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_news_title"
+                android:orientation="horizontal">
+
+                <!-- Text News Description -->
+                <TextView
+                    android:id="@+id/txt_news_brief"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:padding="@dimen/padding_three"
+                    android:text="@{newsModelItem.description}"/>
+
+                <!--   news image -->
+
+                <ImageView
+                    android:id="@+id/iv_newsitem"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:src="@{newsModelItem.imageHref}"/>
+
+                <!-- image right arrow-->
+
+                <ImageView
+                    android:id="@+id/iv_listrightarrow"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:src="@drawable/rightarrow"/>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <!--  <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:background="@color/lightBg"
+          android:padding="5dp"
+          android:layout_margin="5dp"
+          >
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@{newsModelItem.imageHref}"
+              android:textSize="15dp"
+              />
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@{newsModelItem.title}" />
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@{newsModelItem.description}" />
+
+      </LinearLayout>-->
 </layout>
