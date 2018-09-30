@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MVVMRX.iml" filepath="$PROJECT_DIR$/MVVMRX.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/MVVM_RX.iml" filepath="$PROJECT_DIR$/.idea/MVVM_RX.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rxjavamvvm.iml" filepath="$PROJECT_DIR$/rxjavamvvm.iml" />
     </modules>
   </component>
 </project>
