@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity{
     private NewsModelViewModel mNewsModelViewModel;
     private DisposableObserver mGetAndroidVersion;
     private RecyclerView mVersionList;
-    private VersionAdapter mVersionAdapter;
+    private MainAdapter mMainAdapter;
 
 
     @Override
@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity{
 
         mVersionList = mMainActivityBinding.rlVersionlist;
         mVersionList.setLayoutManager(new LinearLayoutManager(this));
-        mVersionAdapter = new VersionAdapter();
-        mVersionAdapter.showList(mNewsModelViewModel.getDataList());
-        mVersionList.setAdapter(mVersionAdapter);
+        mMainAdapter = new MainAdapter();
+        mMainAdapter.showList(mNewsModelViewModel.getDataList());
+        mVersionList.setAdapter(mMainAdapter);
     }
 
     private void getAndroidVersion() {
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void updateList() {
-        mVersionAdapter.showList(mNewsModelViewModel.getDataList());
+        mMainAdapter.showList(mNewsModelViewModel.getDataList());
     }
 
     @Override

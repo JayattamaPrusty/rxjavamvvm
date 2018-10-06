@@ -6,13 +6,15 @@
  import android.view.ViewGroup;
 
  import com.bumptech.glide.Glide;
+ import com.bumptech.glide.load.engine.DiskCacheStrategy;
+ import com.bumptech.glide.request.RequestOptions;
  import com.jayaa.mvvmrx.R;
  import com.jayaa.mvvmrx.databinding.ItemVersionLayoutBinding;
  import com.jayaa.mvvmrx.model.NewsModelItem;
 
  import java.util.List;
 
-public class VersionAdapter extends RecyclerView.Adapter<VersionAdapter.VersionAdapterViewHolder> {
+public class MainAdapter extends RecyclerView.Adapter<MainAdapter.VersionAdapterViewHolder> {
 
 
     private List<NewsModelItem> mList;
@@ -33,9 +35,21 @@ public class VersionAdapter extends RecyclerView.Adapter<VersionAdapter.VersionA
     @Override
     public void onBindViewHolder(VersionAdapterViewHolder holder, int position) {
       holder.binding.setNewsModelItem(mList.get(position));
-        Glide.with(holder.binding.ivNewsitem.getContext()).load(mList.get(position).getImageHref())
-                .thumbnail(0.5f)
+
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.drawable.nph);
+        requestOptions.error(R.drawable.nph);
+        //requestOptions.override(200,200);
+        requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
+        requestOptions.fitCenter();
+
+        Glide.with(holder.binding.ivNewsitem.getContext())
+                .setDefaultRequestOptions(requestOptions)
+                .load(mList.get(position).getImageHref())
+                .thumbnail(.5f)
                 .into(holder.binding.ivNewsitem);
+
+
 
     }
 
