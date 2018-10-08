@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:card_view="http://schemas.android.com/apk/res-auto">
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -29,12 +30,11 @@
                 android:id="@+id/txt_news_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/lato_bold"
                 android:padding="@dimen/padding_three"
                 android:text="@{newsModelItem.title}"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="@dimen/tv_largetext"
-                />
+                android:textSize="@dimen/tv_largetext" />
 
 
             <LinearLayout
@@ -49,17 +49,20 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
+                    android:fontFamily="@font/lato"
                     android:padding="@dimen/padding_three"
-                    android:text="@{newsModelItem.description}"/>
+                    android:text="@{newsModelItem.description}" />
 
                 <!--   news image -->
 
                 <ImageView
                     android:id="@+id/iv_newsitem"
-                    android:layout_width="120dp"
+                    android:layout_width="0dp"
                     android:layout_height="100dp"
                     android:layout_weight="3"
-                    android:src="@{newsModelItem.imageHref}"/>
+                    android:adjustViewBounds="true"
+                    tools:ignore="ContentDescription"
+                    card_view:imageUrl="@{newsModelItem.imageHref}"/>
 
                 <!-- image right arrow-->
 
@@ -69,6 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
+                    tools:ignore="ContentDescription"
                     android:src="@drawable/rightarrow"/>
 
             </LinearLayout>

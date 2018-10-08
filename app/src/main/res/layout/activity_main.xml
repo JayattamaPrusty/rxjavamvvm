@@ -3,11 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="newsModelViewModel"
             type="com.jayaa.mvvmrx.viewModel.NewsModelViewModel" />
     </data>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,25 +23,48 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary" />
 
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rl_versionlist"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/srl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/toolbar"
-            android:padding="5dp"
             android:visibility="@{newsModelViewModel.hasData ? View.VISIBLE : View.GONE}"
+            android:layout_below="@id/toolbar">
 
-            />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rl_versionlist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:padding="5dp"
+                android:visibility="@{newsModelViewModel.hasData ? View.VISIBLE : View.GONE}"
+
+                />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/no_data"
-            android:visibility="@{newsModelViewModel.hasData ?  View.GONE : View.VISIBLE}"
-            />
+            android:visibility="@{newsModelViewModel.hasData ?  View.GONE : View.VISIBLE}" />
+
+
+        <Button
+            android:id="@+id/btn_retry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/padding_three"
+            android:backgroundTint="@color/colorPrimary"
+            android:gravity="center"
+            android:onClick="onRetry"
+            android:text="@string/Retry"
+            android:visibility="@{newsModelViewModel.hasData ?  View.GONE : View.VISIBLE}" />
 
 
     </RelativeLayout>
+
+
 </layout>

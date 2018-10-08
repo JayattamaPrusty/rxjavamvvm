@@ -25,10 +25,10 @@ public class NewsModelViewModel extends Observable {
 
     public NewsModelViewModel(Context mContext) {
         this.mContext = mContext;
-        this.dataList = new ArrayList<NewsModelItem>();
+        this.dataList = new ArrayList<>();
     }
 
-    public void getAndroidVersionList(Observer mObserver) {
+    public void getNewsListByAddObserver(Observer mObserver) {
 
         new RetrofitAPI().getRetrofit().create(AndroidUserAPI.class)
                 .getAndroidVersion()
@@ -38,7 +38,7 @@ public class NewsModelViewModel extends Observable {
 
     }
 
-    public void updateVersionDataList(List<NewsModelItem> list) {
+    public void updateNewsListInViewmodel(List<NewsModelItem> list) {
         dataList = list;
     }
 
@@ -48,8 +48,12 @@ public class NewsModelViewModel extends Observable {
 
 
     public boolean hasData(){
-         if(getDataList()!=null && getDataList().size()>0)
+
+        return (getDataList()!=null && getDataList().size()>0)?true:false;
+       /*  if(getDataList()!=null && getDataList().size()>0){
+
              return true;
-         return false;
+         }
+         return false;*/
     }
 }
