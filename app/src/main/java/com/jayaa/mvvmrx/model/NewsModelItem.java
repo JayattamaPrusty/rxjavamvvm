@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.annotations.Expose;
@@ -36,15 +37,15 @@ public class NewsModelItem {
         Log.i("III", "Image - " + url);
         Context context = view.getContext();
 
-        RequestOptions requestOptions = new RequestOptions();
-        requestOptions.placeholder(R.drawable.nph);
-        requestOptions.error(R.drawable.nph);
-        //requestOptions.override(200,200);
-        requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
-        requestOptions.fitCenter();
+        RequestOptions requestOptions = new RequestOptions()
+                .placeholder(R.drawable.nph)
+                .error(R.drawable.nph)
+                .priority(Priority.HIGH)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .dontTransform()
+                .fitCenter();
 
-
-        Glide.with(context).setDefaultRequestOptions(requestOptions).load(url).into(view);
+        Glide.with(context).setDefaultRequestOptions(requestOptions).load(url).apply(requestOptions).into(view);
     }
 
 
