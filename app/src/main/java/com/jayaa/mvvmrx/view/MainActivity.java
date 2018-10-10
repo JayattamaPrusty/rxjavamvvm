@@ -1,6 +1,7 @@
 package com.jayaa.mvvmrx.view;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -17,6 +18,7 @@ import com.jayaa.mvvmrx.databinding.ActivityMainBinding;
 import com.jayaa.mvvmrx.model.NewsModelItem;
 import com.jayaa.mvvmrx.model.NewsModelResponse;
 import com.jayaa.mvvmrx.util.ConnectivityReceiver;
+import com.jayaa.mvvmrx.util.Constatnts;
 import com.jayaa.mvvmrx.util.Logger;
 import com.jayaa.mvvmrx.viewModel.NewsModelViewModel;
 
@@ -32,6 +34,11 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
     private RecyclerView mVersionList;
     private MainAdapter mMainAdapter;
     private SwipeRefreshLayout refreshLayout;
+
+
+    private SharedPreferences pref;
+    private SharedPreferences.Editor editor;
+
 
     private MyLocalDb localDb;
 
@@ -52,6 +59,10 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+        editor = pref.edit();
+
         localDb = new MyLocalDb(this);
         initDataBinding();
         setUpView();
@@ -95,6 +106,17 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
                 public void onNext(NewsModelResponse data) {
                     if (data != null && data.getData().size() > 0) {
 
+                        if(data.getTitle()!=null && !data.getTitle().isEmpty()){
+
+
+                            editor.putString(Constatnts.title_toolbar, data.getTitle()); // Storing string
+
+                            editor.commit(); // commit changes
+
+                            getSupportActionBar().setTitle(data.getTitle());
+                        }
+
+
                         ArrayList<NewsModelItem> rowArrayList = new ArrayList<>();
 
                         for (NewsModelItem row : data.getData()) {
@@ -132,6 +154,14 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
 
         } else {
 
+            if(pref.getString(Constatnts.title_toolbar,null)!=null){
+
+
+                if(!pref.getString(Constatnts.title_toolbar,null).isEmpty()){
+
+                    getSupportActionBar().setTitle(pref.getString(Constatnts.title_toolbar,null));
+                }
+            }
 
             ArrayList<NewsModelItem> newslist = localDb.getNewsList(this);
             mNewsModelViewModel.updateNewsListInViewmodel(newslist);
